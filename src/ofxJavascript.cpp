@@ -1,5 +1,6 @@
 #include "ofxJavascript.h"
 #include "ofxJSScript.h"
+#include "ofxJSUtils.h"
 
 ofxJavascript*					ofxJavascript::smp_instance			= 0;
 uint32							ofxJavascript::sm_branchCount		= 1;
@@ -432,6 +433,33 @@ JSObject* ofxJSGetGlobalObj()
 	if (ofxJavascript::smp_instance)
 		return ofxJavascript::smp_instance->getGlobalObj();
 	return 0;
+}
+
+
+// GET GLOBAL VARIABLE
+
+float  ofxJSGetGlobalFloatVariable(const char *name)
+{
+    JSObject *object = ofxJSGetGlobalObj();
+    jsval val;
+    ofxJSObject_GET_property(object, name, val);
+    return ofxJSValue_TO_float(val);
+}
+
+int  ofxJSGetGlobalIntVariable(const char *name)
+{
+    JSObject *object = ofxJSGetGlobalObj();
+    jsval val;
+    ofxJSObject_GET_property(object, name, val);
+    return ofxJSValue_TO_int(val);
+}
+
+bool  ofxJSGetGlobalBoolVariable(const char *name)
+{
+    JSObject *object = ofxJSGetGlobalObj();
+    jsval val;
+    ofxJSObject_GET_property(object, name, val);
+    return ofxJSValue_TO_bool(val);
 }
 
 

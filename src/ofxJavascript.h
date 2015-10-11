@@ -120,4 +120,10 @@ void			ofxJSPrintCallback	(void*, ofxJavascript::jsPrintCallBack);
 JSContext*		ofxJSGetContext		();
 JSObject*		ofxJSGetGlobalObj	();
 
+// GLOBAL VARIABLES IN JS
+float           ofxJSGetGlobalFloatVariable(const char *name);
+int             ofxJSGetGlobalIntVariable(const char *name);
+bool            ofxJSGetGlobalBoolVariable(const char *name);
+
+
 #endif
